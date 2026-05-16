@@ -1,4 +1,4 @@
-namespace TestAutomation.Core;
+namespace TestAutomation.Core.Infrastructure.Sessions;
 
 /// <summary>
 /// Упрощенная модель HTTP-ответа для DSL и тестового слоя.

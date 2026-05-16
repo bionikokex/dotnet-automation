@@ -1,4 +1,4 @@
-namespace TestAutomation.Core.Dsl.Infrastructure;
+namespace TestAutomation.Core.Infrastructure.Dsl;
 
 /// <summary>
 /// Базовый класс DSL-узла. Хранит родителя и имя для построения полного пути действия.

@@ -1,5 +1,6 @@
-using TestAutomation.Core;
-using TestAutomation.Core.Dsl.Playwright;
+using TestAutomation.Core.Dsl;
+using TestAutomation.Core.Infrastructure.Context;
+using TestAutomation.Core.Infrastructure.Runtime;
 
 namespace TestAutomation.Tests.Infrastructure;
 
@@ -25,11 +26,20 @@ public abstract class PlaywrightDslTestBase
     /// <summary>
     /// Настройки runtime для конкретного набора тестов.
     /// </summary>
-    protected virtual AutomationOptions CreateOptions() => new()
+    protected virtual AutomationOptions CreateOptions()
     {
-        BaseUrl = "https://playwright.dev",
-        Headless = ResolveHeadlessMode()
-    };
+        var options = new AutomationOptions
+        {
+            BaseUrl = "https://playwright.dev"
+        };
+
+        if (ResolveHeadlessMode())
+        {
+            options.BrowserOptions = new() { Headless = true };
+        }
+
+        return options;
+    }
 
     private static bool ResolveHeadlessMode()
     {
@@ -46,7 +56,8 @@ public abstract class PlaywrightDslTestBase
     [SetUp]
     public async Task SetUpAsync()
     {
-        _runtime = await AutomationRuntime.CreateAsync(CreateOptions());
+        _runtime = new AutomationRuntime(CreateOptions());
+        await _runtime.InitializeAsync();
         _dsl = new PlaywrightDsl(_runtime);
     }
 

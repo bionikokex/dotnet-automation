@@ -1,10 +1,13 @@
-using TestAutomation.Core.Dsl.Playwright.Api;
-using TestAutomation.Core.Dsl.Playwright.Cli;
-using TestAutomation.Core.Dsl.Playwright.Docs;
-using TestAutomation.Core.Dsl.Infrastructure;
-using TestAutomation.Core.Dsl.Playwright.Mcp;
+using TestAutomation.Core.Dsl.Api;
+using TestAutomation.Core.Dsl.Cli;
+using TestAutomation.Core.Dsl.Docs;
+using TestAutomation.Core.Dsl.Mcp;
+using TestAutomation.Core.Infrastructure.Context;
+using TestAutomation.Core.Infrastructure.Drivers;
+using TestAutomation.Core.Infrastructure.Dsl;
+using TestAutomation.Core.Infrastructure.Runtime;
 
-namespace TestAutomation.Core.Dsl.Playwright;
+namespace TestAutomation.Core.Dsl;
 
 /// <summary>
 /// Корневой DSL для playwright.dev, агрегирующий домены верхних табов.

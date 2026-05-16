@@ -1,5 +1,6 @@
-using TestAutomation.Core;
 using TestAutomation.Core.Abstractions;
+using TestAutomation.Core.Infrastructure.Context;
+using TestAutomation.Core.Infrastructure.Sessions;
 
 namespace TestAutomation.Tests;
 

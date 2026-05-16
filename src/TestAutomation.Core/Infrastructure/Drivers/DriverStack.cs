@@ -1,4 +1,4 @@
-namespace TestAutomation.Core.Dsl.Infrastructure;
+namespace TestAutomation.Core.Infrastructure.Drivers;
 
 /// <summary>
 /// Stack драйверов, предоставляющий доступ к паре (UIDriver, ApiDriver).

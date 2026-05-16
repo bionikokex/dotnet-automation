@@ -1,4 +1,5 @@
 using TestAutomation.Core.Abstractions;
+using TestAutomation.Core.Infrastructure.Sessions;
 
 namespace TestAutomation.Core.Examples.Browser;
 

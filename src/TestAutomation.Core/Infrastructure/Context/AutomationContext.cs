@@ -1,4 +1,6 @@
-namespace TestAutomation.Core;
+using TestAutomation.Core.Infrastructure.Sessions;
+
+namespace TestAutomation.Core.Infrastructure.Context;
 
 /// <summary>
 /// Общий runtime-контекст, содержащий browser и api слои.

@@ -1,3 +1,6 @@
+using TestAutomation.Core.Infrastructure.Context;
+using TestAutomation.Core.Infrastructure.Sessions;
+
 namespace TestAutomation.Core.Abstractions;
 
 /// <summary>

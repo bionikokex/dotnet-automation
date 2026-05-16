@@ -1,6 +1,7 @@
-using TestAutomation.Core.Dsl.Infrastructure;
+using TestAutomation.Core.Infrastructure.Drivers;
+using TestAutomation.Core.Infrastructure.Dsl;
 
-namespace TestAutomation.Core.Dsl.Playwright.Api;
+namespace TestAutomation.Core.Dsl.Api;
 
 /// <summary>
 /// DSL домена API.

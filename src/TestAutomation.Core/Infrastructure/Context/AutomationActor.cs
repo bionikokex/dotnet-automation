@@ -1,6 +1,6 @@
 using TestAutomation.Core.Abstractions;
 
-namespace TestAutomation.Core;
+namespace TestAutomation.Core.Infrastructure.Context;
 
 /// <summary>
 /// Единая точка выполнения DSL-действий поверх общего automation context.

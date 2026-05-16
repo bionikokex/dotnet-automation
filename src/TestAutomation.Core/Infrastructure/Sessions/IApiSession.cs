@@ -1,4 +1,4 @@
-namespace TestAutomation.Core;
+namespace TestAutomation.Core.Infrastructure.Sessions;
 
 /// <summary>
 /// Контракт api layer для HTTP-операций в DSL.

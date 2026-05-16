@@ -1,18 +1,18 @@
 using Microsoft.Playwright;
 
-namespace TestAutomation.Core;
+namespace TestAutomation.Core.Infrastructure.Drivers;
 
 /// <summary>
-/// Тонкая обертка над Playwright <see cref="IPage"/>.
+/// Унифицированный UI driver — обёртка над Playwright IPage для браузерных действий.
 /// </summary>
-public sealed class BrowserLayer : IBrowserSession
+public sealed class UIDriver
 {
     private readonly IPage _page;
 
     /// <summary>
-    /// Создает browser layer поверх Playwright page.
+    /// Создает UI driver поверх Playwright page.
     /// </summary>
-    public BrowserLayer(IPage page)
+    public UIDriver(IPage page)
     {
         _page = page;
     }
@@ -73,4 +73,9 @@ public sealed class BrowserLayer : IBrowserSession
 
         return Task.CompletedTask;
     }
+
+    /// <summary>
+    /// Возвращает Playwright page для прямого доступа при необходимости.
+    /// </summary>
+    public IPage Page => _page;
 }

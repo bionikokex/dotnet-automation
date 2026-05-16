@@ -1,6 +1,7 @@
 using Microsoft.Playwright;
+using TestAutomation.Core.Infrastructure.Sessions;
 
-namespace TestAutomation.Core.Dsl.Infrastructure;
+namespace TestAutomation.Core.Infrastructure.Drivers;
 
 /// <summary>
 /// Унифицированный API driver — обёртка над Playwright IAPIRequestContext для HTTP-действий.

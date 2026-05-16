@@ -1,6 +1,6 @@
 using Microsoft.Playwright;
 
-namespace TestAutomation.Core;
+namespace TestAutomation.Core.Infrastructure.Sessions;
 
 /// <summary>
 /// Тонкая обертка над Playwright <see cref="IAPIRequestContext"/>.

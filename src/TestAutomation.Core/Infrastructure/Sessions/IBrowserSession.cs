@@ -1,4 +1,4 @@
-namespace TestAutomation.Core;
+namespace TestAutomation.Core.Infrastructure.Sessions;
 
 /// <summary>
 /// Контракт browser layer, через который DSL взаимодействует с UI.
