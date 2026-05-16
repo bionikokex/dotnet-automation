@@ -7,20 +7,25 @@ namespace TestAutomation.Core.Dsl.Playwright.Mcp;
 /// </summary>
 public sealed class McpDsl : DslBase
 {
-    private readonly IMcpDriver _drivers;
+    private readonly DriverStack _drivers;
 
     /// <summary>
-    /// Создает MCP DSL и подключает driver collection.
+    /// Создает MCP DSL с доступом к стеку драйверов.
     /// </summary>
-    public McpDsl(AutomationActor actor, AutomationDriverContext context, DslBase baseDsl)
+    public McpDsl(DriverStack drivers, DslBase baseDsl)
         : base(baseDsl, "MCP")
     {
-        _drivers = new McpDriverCollection(actor, context, this);
+        _drivers = drivers;
     }
 
     /// <summary>
     /// Открывает MCP introduction через верхний таб.
     /// </summary>
-    public Task OpenIntroductionFromTabAsync()
-        => _drivers.OpenIntroductionFromTabAsync();
+    public async Task OpenIntroductionFromTabAsync()
+    {
+        var ui = _drivers.UI;
+        await ui.GotoAsync("/");
+        await ui.ClickAsync("nav a:has-text(\"MCP\")");
+        await ui.AssertUrlContainsAsync("/mcp/introduction");
+    }
 }

@@ -11,24 +11,30 @@ namespace TestAutomation.Core.Dsl.Playwright;
 /// </summary>
 public sealed class PlaywrightDsl : DslBase
 {
+    private readonly DriverStack _drivers;
+
     /// <summary>
     /// Создает корневой DSL поверх готового Playwright runtime.
     /// </summary>
     public PlaywrightDsl(AutomationRuntime runtime)
-        : this(runtime.Actor, new AutomationDriverContext())
+        : this(runtime.Actor, runtime)
     {
     }
 
     /// <summary>
     /// Создает корневой DSL и все дочерние домены.
     /// </summary>
-    public PlaywrightDsl(AutomationActor actor, AutomationDriverContext context)
+    public PlaywrightDsl(AutomationActor actor, AutomationRuntime runtime)
         : base(null, "Playwright")
     {
-        Docs = new DocsDsl(actor, context, this);
-        Mcp = new McpDsl(actor, context, this);
-        Cli = new CliDsl(actor, context, this);
-        Api = new ApiDsl(actor, context, this);
+        _drivers = new DriverStack(
+            new UIDriver(runtime.Page),
+            new ApiDriver(runtime.ApiRequestContext));
+
+        Docs = new DocsDsl(_drivers, this);
+        Mcp = new McpDsl(_drivers, this);
+        Cli = new CliDsl(_drivers, this);
+        Api = new ApiDsl(_drivers, this);
     }
 
     /// <summary>
@@ -50,4 +56,9 @@ public sealed class PlaywrightDsl : DslBase
     /// DSL домена API.
     /// </summary>
     public ApiDsl Api { get; }
+
+    /// <summary>
+    /// Стек драйверов (UI + Api).
+    /// </summary>
+    internal DriverStack Drivers => _drivers;
 }

@@ -7,20 +7,25 @@ namespace TestAutomation.Core.Dsl.Playwright.Cli;
 /// </summary>
 public sealed class CliDsl : DslBase
 {
-    private readonly ICliDriver _drivers;
+    private readonly DriverStack _drivers;
 
     /// <summary>
-    /// Создает CLI DSL и подключает driver collection.
+    /// Создает CLI DSL с доступом к стеку драйверов.
     /// </summary>
-    public CliDsl(AutomationActor actor, AutomationDriverContext context, DslBase baseDsl)
+    public CliDsl(DriverStack drivers, DslBase baseDsl)
         : base(baseDsl, "CLI")
     {
-        _drivers = new CliDriverCollection(actor, context, this);
+        _drivers = drivers;
     }
 
     /// <summary>
     /// Открывает CLI introduction через верхний таб.
     /// </summary>
-    public Task OpenIntroductionFromTabAsync()
-        => _drivers.OpenIntroductionFromTabAsync();
+    public async Task OpenIntroductionFromTabAsync()
+    {
+        var ui = _drivers.UI;
+        await ui.GotoAsync("/");
+        await ui.ClickAsync("nav a:has-text(\"CLI\")");
+        await ui.AssertUrlContainsAsync("/agent-cli/introduction");
+    }
 }

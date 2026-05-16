@@ -35,6 +35,16 @@ public sealed class AutomationRuntime : IAsyncDisposable
     public AutomationActor Actor { get; }
 
     /// <summary>
+    /// Playwright page для UI действий.
+    /// </summary>
+    public IPage Page => _page;
+
+    /// <summary>
+    /// API request context для HTTP действий.
+    /// </summary>
+    public IAPIRequestContext ApiRequestContext => _dedicatedApiRequestContext ?? _browserContext.APIRequest;
+
+    /// <summary>
     /// Создает Playwright runtime и собирает общий automation context.
     /// </summary>
     public static async Task<AutomationRuntime> CreateAsync(
