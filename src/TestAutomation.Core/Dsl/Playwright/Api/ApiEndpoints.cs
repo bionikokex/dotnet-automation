@@ -13,5 +13,5 @@ internal static class ApiEndpoints
     /// <summary>
     /// Ожидаемый текст в ответе главной страницы.
     /// </summary>
-    internal const string RootExpectedContent = "Playwright enables reliable web automation";
+    internal const string RootExpectedContent = "Fast and reliable end-to-end testing for modern web apps";
 }

@@ -11,6 +11,8 @@ namespace TestAutomation.Tests.Infrastructure;
 /// </summary>
 public abstract class PlaywrightDslTestBase
 {
+    private const string HeadlessEnvironmentVariable = "TEST_AUTOMATION_HEADLESS";
+
     private AutomationRuntime? _runtime;
     private PlaywrightDsl? _dsl;
 
@@ -26,8 +28,17 @@ public abstract class PlaywrightDslTestBase
     protected virtual AutomationOptions CreateOptions() => new()
     {
         BaseUrl = "https://playwright.dev",
-        Headless = true
+        Headless = ResolveHeadlessMode()
     };
+
+    private static bool ResolveHeadlessMode()
+    {
+        var configuredValue = Environment.GetEnvironmentVariable(HeadlessEnvironmentVariable);
+
+        return bool.TryParse(configuredValue, out var headless)
+            ? headless
+            : true;
+    }
 
     /// <summary>
     /// Поднимает Playwright runtime перед каждым тестом.

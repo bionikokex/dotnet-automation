@@ -89,8 +89,12 @@ dotnet restore
 dotnet build --configuration Release
 
 # Установка браузеров Playwright (первый раз)
-dotnet tool install --global Microsoft.Playwright.CLI
-playwright install
+pwsh tests/TestAutomation.Tests/bin/Release/net8.0/playwright.ps1 install chromium
+# Если pwsh не установлен на Windows:
+powershell -ExecutionPolicy Bypass -File tests/TestAutomation.Tests/bin/Release/net8.0/playwright.ps1 install chromium
+
+# Опционально: запуск UI-тестов с видимым браузером
+TEST_AUTOMATION_HEADLESS=false dotnet test
 
 # Запуск тестов
 dotnet test
