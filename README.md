@@ -50,6 +50,17 @@ tests/
     Infrastructure/
 docs/
   architecture.md
+TestAutomation.sln          # Solution файл
+```
+
+Для работы со solution используйте:
+
+```bash
+# Сборка всего solution
+dotnet build TestAutomation.sln
+
+# Запуск тестов через solution
+dotnet test TestAutomation.sln
 ```
 
 ## NUnit + Playwright
@@ -64,18 +75,43 @@ docs/
 
 Это и есть отдельная прослойка подключения Playwright через NUnit lifecycle.
 
-## Как запустить локально
+## Сборка и тестирование
+
+### Локальный запуск
 
 Требуется установленный **.NET SDK 8+**.
 
-Основные команды:
-
 ```bash
+# Восстановление пакетов
 dotnet restore
+
+# Сборка
+dotnet build --configuration Release
+
+# Установка браузеров Playwright (первый раз)
+dotnet tool install --global Microsoft.Playwright.CLI
+playwright install
+
+# Запуск тестов
 dotnet test
 ```
 
-После первого restore нужно установить браузеры Playwright для .NET по инструкции из `Microsoft.Playwright`.
+### CI/CD (GitHub Actions)
+
+Проект настроен на автоматическую сборку и тестирование через GitHub Actions.
+
+Workflow запускается при:
+- `push` в ветки `main` или `master`
+- `pull_request` в ветки `main` или `master`
+- Ручном запуске (`workflow_dispatch`)
+
+Структура workflow:
+1. Checkout кода
+2. Setup .NET 8 SDK
+3. Restore dependencies
+4. Build (Release конфигурация)
+5. Install Playwright browsers
+6. Run tests
 
 ## Документация
 

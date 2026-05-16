@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{89FE0C50-E914-4C7D-97E8-BDCA079F029A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAutomation.Core", "src\TestAutomation.Core\TestAutomation.Core.csproj", "{592A272A-D74F-45C8-8E00-B84824048B79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AE8A69C8-B5BB-41E3-9956-CAFD4FB2A66A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAutomation.Tests", "tests\TestAutomation.Tests\TestAutomation.Tests.csproj", "{71210D10-DFBF-4720-8D2D-8976541C6FC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{592A272A-D74F-45C8-8E00-B84824048B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592A272A-D74F-45C8-8E00-B84824048B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592A272A-D74F-45C8-8E00-B84824048B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592A272A-D74F-45C8-8E00-B84824048B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71210D10-DFBF-4720-8D2D-8976541C6FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71210D10-DFBF-4720-8D2D-8976541C6FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71210D10-DFBF-4720-8D2D-8976541C6FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71210D10-DFBF-4720-8D2D-8976541C6FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{592A272A-D74F-45C8-8E00-B84824048B79} = {89FE0C50-E914-4C7D-97E8-BDCA079F029A}
+		{71210D10-DFBF-4720-8D2D-8976541C6FC0} = {AE8A69C8-B5BB-41E3-9956-CAFD4FB2A66A}
+	EndGlobalSection
+EndGlobal
